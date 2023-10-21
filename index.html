@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <p v-if="arr.length > 0">{{arr[index]}}</p>
+      <br />
+      <button v-on:click="random">click</button>
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    Vue.createApp({
+      data: () => {
+        return {
+          arr: [],
+          index: null,
+        };
+      },
+      mounted() {
+        const ARRAY_LENGTH = 100;
+        const randomArray = [];
+        for (let i = 0; i < ARRAY_LENGTH; i++) {
+          randomArray.push(Math.round(Math.random() * 100000));
+        }
+        this.arr = randomArray;
+      },
+      methods: {
+        random: function () {
+          const random = Math.floor(Math.random() * this.arr.length);
+          this.index = random;
+        },
+      },
+    }).mount("#root");
+  </script>
+</html>
