@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root">
+      <ul v-if="arr.length > 0">
+        <li v-for="num in arr">{{num}}</li>
+      </ul>
+    </div>
+  </body>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    Vue.createApp({
+      data: () => {
+        return {
+          arr: [],
+        };
+      },
+      mounted() {
+        for (let i = 0; i <= 20; i++) {
+          if (i % 2 == 0) {
+            this.arr.push(i);
+          }
+        }
+      },
+    }).mount("#root");
+  </script>
+</html>
