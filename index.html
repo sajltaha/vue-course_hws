@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    Vue.createApp({
+      data: () => {
+        return {
+          arrOfColors: [],
+        };
+      },
+      mounted() {
+        for (let i = 0; i <= 20; i++) {
+          const randomRgbColor = () => {
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            return "rgb(" + r + "," + g + "," + b + ")";
+          };
+          this.arrOfColors.push(randomRgbColor());
+        }
+
+        let i = 0;
+
+        setInterval(() => {
+          if (i !== this.arrOfColors.length - 1) {
+            document.body.style.background = this.arrOfColors[i];
+            i++;
+          } else {
+            i = 0;
+          }
+        }, 1000);
+      },
+    }).mount("#root");
+  </script>
+</html>
